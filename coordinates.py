@@ -29,7 +29,17 @@ if __name__ == "__main__":
         print("  - Applies a 40:1 scale + offset transformation to get Vancouver Island Minecraft Map coordinates")
         sys.exit(1)
 
-    lon = float(sys.argv[1])
-    lat = float(sys.argv[2])
+    val1 = float(sys.argv[1])
+    val2 = float(sys.argv[2])
+
+    # Detect which is lon and which is lat
+    if val1 < 0 and val2 > 0:
+        lon, lat = val1, val2
+    elif val2 < 0 and val1 > 0:
+        lon, lat = val2, val1
+    else:
+        print("Error: One value must be negative (longitude), one positive (latitude).")
+        sys.exit(1)
+
     x_b, y_b = convert_lonlat_to_map_b(lon, lat)
     print(f"Map B coordinates: x = {x_b:.2f}, y = {y_b:.2f}")
