@@ -42,4 +42,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     x_b, y_b = convert_lonlat_to_map_b(lon, lat)
-    print(f"Map B coordinates: x = {x_b:.2f}, y = {y_b:.2f}")
+
+    # Round for Minecraft coordinate style
+    x_minecraft = round(x_b)
+    z_minecraft = round(y_b)
+
+    # Output in minecraft coords
+    print(f"{x_minecraft} ~ {z_minecraft}")
